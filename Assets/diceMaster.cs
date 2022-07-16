@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class diceMaster : MonoBehaviour
 {
-    public class Dice()
+    public class Dice
     {
         public int sides;
         int maxEffects;
         int[] effects;
 
-        public dice(int sides, int maxEffects)
+        public Dice(int sides, int maxEffects)
         {
             sides = 6;
             maxEffects = 3;
@@ -22,19 +22,8 @@ public class diceMaster : MonoBehaviour
             }
         }
 
-        public addEffect(int effect)
+        public void addEffect(int effect)
         {
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
