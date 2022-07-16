@@ -251,3 +251,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358d3d7dd9ee9a44c89952fcace6b8a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diceSprite: {fileID: 21300000, guid: a8091a775f888dd4f8770e155af9822e, type: 3}

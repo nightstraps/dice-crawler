@@ -6,10 +6,9 @@ public class diceMaster : MonoBehaviour
 {
     public class dice
     {
-        //0 represents x, 1 represents x and so on. This helps track what number is equal to what effect name
+    //0 represents x, 1 represents x and so on. This helps track what number is equal to what effect name
         enum effectAlias{EFFECT1, EFFECT2};
 
-        Sprite diceSprite;
         int numSides;
         int maxEffects;
         int[] effects;
@@ -23,13 +22,13 @@ public class diceMaster : MonoBehaviour
             for (int i=0; i<maxEffects; i++){ effects[i] = -1;}
         }
 
+        //TODO: find texture based off number of sides
         //better dice constructor
         public dice(int numSides, int maxEffects)
         {
             this.numSides = numSides;
             this.maxEffects = maxEffects;
             effects = new int[maxEffects];
-            //-1 represents no effects in that slot
             for (int i=0; i<maxEffects; i++){ effects[i] = -1;}
         }
 
@@ -73,12 +72,21 @@ public class diceMaster : MonoBehaviour
         }
     }
 
-    int bagSize;
+    //use this to instantiate the starting pool that player draws from
+    int startPoolSize = 20;
+    dice[] startingPool;
+    //this is the player's current bag
+    int playerBagSize = 5;
     dice[] bag;
 
-    void Start() 
+    void Start()
     {
-
+        startingPool = new dice[startPoolSize];
+        bag = new dice[playerBagSize];
+        
+        //testing out new sprite
+        dice x = new dice(2, 3);
+        x.debugDice();
     }
 
     void Update()
