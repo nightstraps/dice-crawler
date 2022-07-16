@@ -9,33 +9,35 @@ public class diceMaster : MonoBehaviour
         //0 represents x, 1 represents x and so on. This helps track what number is equal to what effect name
         enum effectAlias{EFFECT1, EFFECT2};
 
-        int sides;
+        Sprite diceSprite;
+        int numSides;
         int maxEffects;
         int[] effects;
         
         //generic dice constructor
         public dice()
         {
-            sides = 6;
+            numSides = 6;
             maxEffects = 3;
             effects = new int[maxEffects];
             for (int i=0; i<maxEffects; i++){ effects[i] = -1;}
         }
 
         //better dice constructor
-        public dice(int sides, int maxEffects)
+        public dice(int numSides, int maxEffects)
         {
-            this.sides = sides;
+            this.numSides = numSides;
             this.maxEffects = maxEffects;
             effects = new int[maxEffects];
             //-1 represents no effects in that slot
             for (int i=0; i<maxEffects; i++){ effects[i] = -1;}
         }
 
+        //prints all the values
         public void debugDice()
         {
-            Debug.Log("number of sides: " + sides + "\n");
-            Debug.Log("max number of effects "+ maxEffects + "\n");
+            Debug.Log("number of sides: " + numSides);
+            Debug.Log("max number of effects "+ maxEffects);
             Debug.Log("contains the following number of effects: ");
             for (int i=0; i<maxEffects; i++)
             {
@@ -45,9 +47,15 @@ public class diceMaster : MonoBehaviour
                 } 
                 else 
                 {
-                    Debug.Log(", ");
+                    Debug.Log("...");
                 }
             }
+        }
+
+        //roll dice, returns any number from 1 to numSides
+        public int rollDice()
+        {
+            return Random.Range(1, numSides);
         }
 
         //TODO: addeffect overflow error handling. behaviour?
@@ -65,10 +73,16 @@ public class diceMaster : MonoBehaviour
         }
     }
 
+    int bagSize;
+    dice[] bag;
+
     void Start() 
     {
-        dice x = new dice(6, 3);
-        x.addEffect(1);
-        x.debugDice(); 
+
+    }
+
+    void Update()
+    {
+
     }
 }
