@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class diceMaster : MonoBehaviour
 {
-    public GameObject thisObject;
-
     public Sprite[] diceSprites;
     public GameObject diePrefab;
 
@@ -50,7 +49,7 @@ public class diceMaster : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(thisObject);
+        DontDestroyOnLoad(gameObject);
         startingPool = new dice[startPoolSize];
         playerBag = new dice[maxPlayerBagSize];
         
@@ -62,21 +61,21 @@ public class diceMaster : MonoBehaviour
             {
                 if (i < startPoolSize/2 + 0.5)
                 {
-                    startingPool[i] = new dice(-startPoolSize/2 - 1/2 + i * 2, 5);
+                    startingPool[i] = new dice(-startPoolSize/2 - 1/2 + i * 2, 2);
                 }
                 else
                 {
-                    startingPool[i] = new dice(-startPoolSize/2 - 1/2 + (i - startPoolSize/2 - 1) * 2, 3);
+                    startingPool[i] = new dice(-startPoolSize/2 - 1/2 + (i - startPoolSize/2 - 1) * 2, 0);
                 }
             }
             else if(oddOrEvenPool == 0)
                 if(i < startPoolSize/2)
                 {
-                    startingPool[i] = new dice((i * 2 - startPoolSize/2), 5);
+                    startingPool[i] = new dice((i * 2 - startPoolSize/2), 2);
                 }
                 else
                 {
-                    startingPool[i] = new dice((i - startPoolSize/2)*2 - startPoolSize/2, 3);
+                    startingPool[i] = new dice((i - startPoolSize/2)*2 - startPoolSize/2, 0);
                 }
         }
     }
@@ -91,7 +90,6 @@ public class diceMaster : MonoBehaviour
         // and putting it into the bag (variable) DONE
         //...
         // figure out way to change to 
-        
         if (numberOfDiceInBag < playerBagSize)
         {
             for (int i=0; i<startPoolSize; i++)
@@ -105,8 +103,13 @@ public class diceMaster : MonoBehaviour
             {
                 Destroy(startingPool[i].me);
             }
+            Button backButton = GameObject.Find("Continue Button").GetComponent<Button>();
+            backButton.interactable = true;
+            {
+                
+            }
             Debug.Log("finished picking dice!"); 
-        }
+        } 
           
     }
 

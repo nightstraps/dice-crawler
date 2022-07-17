@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class dieBehaviour : MonoBehaviour
-{    
+{   
     public dice thisDie;
     void OnMouseDown()
     {
