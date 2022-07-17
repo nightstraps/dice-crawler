@@ -5,23 +5,21 @@ using UnityEngine.UI;
 
 public class riskBar : MonoBehaviour
 {
-    public Slider riskSlider;
-    public Text riskText;
+    Slider riskSlider;
 
-    private void Awake()
+    private void awake()
     {
         riskSlider.value = 0;
     }
-    public void IncreaseRisk(int dieSides)
+    public void increaseRisk(int dieSides)
     {
         riskSlider.value += dieSides;
     }
-    void Update()
+    void update()
     {
         if(riskSlider.value == 100)
         {
             //risk effect stuff
         }
-        riskText.text = riskSlider.value.ToString();
     }
 }

@@ -5,15 +5,11 @@ using UnityEngine.UI;
 
 public class healthBar : MonoBehaviour
 {
-    public GameObject sceneManagerObject;
     public Slider healthSlider;
-    public Text healthText;
-    public float deathTime;
-    float deathTimer;
 
-    private void Awake()
+    private void awake()
     {
-        healthSlider.value = 100;
+        healthSlider.value = 0;
     }
     public void AddHealth(int heal)
     {
@@ -32,18 +28,5 @@ public class healthBar : MonoBehaviour
     {
         healthSlider.value -= maxDecrease;
         healthSlider.maxValue -= maxDecrease;
-    }
-    void Update()
-    {
-        if(healthSlider.value == 0)
-        {
-            deathTimer += Time.deltaTime;
-            if(deathTimer > deathTime)
-            {
-                sceneLoader sceneManagerScript = sceneManagerObject.GetComponent<sceneLoader>();
-                sceneManagerScript.LoadLoseScene();
-            }
-        }
-        healthText.text = healthSlider.value.ToString();
     }
 }
