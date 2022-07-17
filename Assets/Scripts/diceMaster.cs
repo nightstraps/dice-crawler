@@ -104,7 +104,7 @@ public class diceMaster : MonoBehaviour
             {
                 Destroy(startingPool[i].me);
             }
-            if (SceneManager.GetActiveScene().buildIndex != 2)
+            if (SceneManager.GetActiveScene().buildIndex == 1)
             {
                 Button backButton = GameObject.Find("Continue Button").GetComponent<Button>();
                 backButton.interactable = true;
