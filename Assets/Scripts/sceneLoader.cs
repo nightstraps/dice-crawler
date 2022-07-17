@@ -15,6 +15,10 @@ public class sceneLoader : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex += 1);
     
     }
+    public void LoadLoseScene()
+    {
+        SceneManager.LoadScene(4);
+    }
     public void LoadMenuScene()
     {
         SceneManager.LoadScene(0);
