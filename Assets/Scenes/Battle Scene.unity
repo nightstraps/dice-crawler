@@ -385,6 +385,7 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 --- !u!1 &1135615433
 =======
@@ -867,6 +868,8 @@ MonoBehaviour:
       m_Calls: []
 =======
 >>>>>>> parent of fac0483 (created loop between all scenes + additional health and risk counter)
+=======
+>>>>>>> parent of fac0483 (created loop between all scenes + additional health and risk counter)
 --- !u!1 &1704316831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1016,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
@@ -1106,6 +1110,10 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 =======
 >>>>>>> Stashed changes
+=======
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> parent of fac0483 (created loop between all scenes + additional health and risk counter)
 =======
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
