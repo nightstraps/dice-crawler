@@ -8,9 +8,15 @@ public class dieBehaviour : MonoBehaviour
     void OnMouseDown()
     {
         diceMaster diceMasterScript = FindObjectOfType<diceMaster>();
-        if (diceMasterScript.bagFullBool == false)
+        if (!diceMasterScript.bagFullBool)
         {
             diceMasterScript.AddToBag(thisDie, diceMasterScript.playerBag);
+            Destroy(gameObject);
+        }
+        else 
+        {
+            //dice is being displayed in inventory
+            diceMasterScript.attackEnemy(thisDie);
             Destroy(gameObject);
         }
     }
