@@ -10,8 +10,8 @@ public class dice
     //0 represents x, 1 represents x and so on. This helps track what number is equal to what effect name
     enum effectAlias{EFFECT1, EFFECT2};
 
-    int numSides;
-    int maxEffects;
+    public int numSides;
+    public int maxEffects;
     //-1 represents empty effects slot
     int[] effects;
     
@@ -48,6 +48,17 @@ public class dice
         posx = x;
         posy = y;
     }
+    public dice(int numSides, int maxEffects, int[] effects, int x, int y)
+    {
+        diceId = totalDice;
+        totalDice++;
+        this.numSides = numSides;
+        this.maxEffects = maxEffects;
+        effects = new int[maxEffects];
+        this.effects = effects;
+        posx = x;
+        posy = y;
+    }
 
     //location specified
     public dice(int x, int y)
@@ -62,6 +73,10 @@ public class dice
         posy = y;
     }
 
+    public int[] getEffects()
+    {
+        return effects;
+    }
     //prints all the values
     public void debugDice()
     {
@@ -86,8 +101,7 @@ public class dice
     //roll dice, returns any number from 1 to numSides
     public int rollDice()
     {
-        //instead of returning, save this value in a local variable
-        return Random.Range(1, numSides);
+        /**
         for (int i=0; i<effects.Length; i++)
         {
             //check if there is an effect at effects[i]
@@ -96,6 +110,8 @@ public class dice
             
             //in terms of turn based... put advancing one turn into a function
         }
+        **/
+        return Random.Range(1, numSides);
     }
 
     //TODO: addeffect overflow error handling. behaviour?
