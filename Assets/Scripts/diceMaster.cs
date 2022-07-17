@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class diceMaster : MonoBehaviour
 {
+    public GameObject thisObject;
+
     public Sprite[] diceSprites;
     public GameObject diePrefab;
 
@@ -11,12 +13,11 @@ public class diceMaster : MonoBehaviour
     int startPoolSize = 12;
     dice[] startingPool;
     //this is the player's current bag
+    int maxPlayerBagSize = 6;
     int playerBagSize = 4;
     public dice[] playerBag;
     int numberOfDiceInBag = 0;
     public bool bagFullBool = false;
-
-    bool startingScreen = true;
     public void AddToBag(dice x, dice[] targetBag)
     {
         if (numberOfDiceInBag == playerBagSize - 1)
@@ -29,6 +30,7 @@ public class diceMaster : MonoBehaviour
                     break;
                 }
             }
+            numberOfDiceInBag++;
             bagFullBool = true;
         }
         else
@@ -45,11 +47,12 @@ public class diceMaster : MonoBehaviour
             numberOfDiceInBag += 1;
         }
     }
+
     void Start()
     {
-                //CHANGES: spawning and controlling image sprites happens independently from creating dice objects now.
+        DontDestroyOnLoad(thisObject);
         startingPool = new dice[startPoolSize];
-        playerBag = new dice[playerBagSize];
+        playerBag = new dice[maxPlayerBagSize];
         
         //populating pool with generic dice
         for (int i=0; i<startPoolSize; i++)
@@ -85,25 +88,24 @@ public class diceMaster : MonoBehaviour
         // 1. right now, the die prefab comes preloaded with the 6 sided dice sprite. find out a way to change it according to
         //the number of sides it has
         // 2. we need the dice to respond to clicking...you can accomplish this by just taking the die from the startingPool,
-        // and putting it into the bag (variable)
+        // and putting it into the bag (variable) DONE
         //...
-        // these are the hard parts. once these are finished everything will be super easy
-
-        if (startingScreen)
+        // figure out way to change to 
+        
+        if (numberOfDiceInBag < playerBagSize)
         {
-            //do all work related to the loadout page here, don't forget to set startingScreen=false when the loading out is finished.
             for (int i=0; i<startPoolSize; i++)
             {
                 renderDice(startingPool[i]);
-            }   
+            } 
         }
-
-        foreach (dice x in playerBag)
+        else 
         {
-            if (x != null)
+            for (int i=0; i<startPoolSize; i++)
             {
-                x.debugDice();
+                Destroy(startingPool[i].me);
             }
+            Debug.Log("finished picking dice!"); 
         }
           
     }

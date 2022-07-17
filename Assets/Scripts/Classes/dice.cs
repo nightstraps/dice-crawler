@@ -12,6 +12,7 @@ public class dice
 
     int numSides;
     int maxEffects;
+    //-1 represents empty effects slot
     int[] effects;
     
     public int posx;
@@ -29,7 +30,7 @@ public class dice
         numSides = 6;
         maxEffects = 3;
         effects = new int[maxEffects];
-        for (int i=0; i<maxEffects; i++){ effects[i] = -1;}
+        for (int i=0; i<maxEffects; i++){effects[i] = -1;}
         posx = 0;
         posy = 0;
     }
@@ -85,7 +86,16 @@ public class dice
     //roll dice, returns any number from 1 to numSides
     public int rollDice()
     {
+        //instead of returning, save this value in a local variable
         return Random.Range(1, numSides);
+        for (int i=0; i<effects.Length; i++)
+        {
+            //check if there is an effect at effects[i]
+            //if there is effect, apply the effect
+            //you might have to add a field to the class that specifies the player or enemy the dice is attatched to, or the target.
+            
+            //in terms of turn based... put advancing one turn into a function
+        }
     }
 
     //TODO: addeffect overflow error handling. behaviour?
