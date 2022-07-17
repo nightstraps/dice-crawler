@@ -7,6 +7,10 @@ public class riskBar : MonoBehaviour
 {
     Slider riskSlider;
 
+    private void awake()
+    {
+        riskSlider.value = 0;
+    }
     public void increaseRisk(int dieSides)
     {
         riskSlider.value += dieSides;
