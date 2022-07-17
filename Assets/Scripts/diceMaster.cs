@@ -12,22 +12,72 @@ public class diceMaster : MonoBehaviour
     dice[] startingPool;
     //this is the player's current bag
     int playerBagSize = 4;
-    dice[] bag;
+    public dice[] playerBag;
+    int numberOfDiceInBag = 0;
+    public bool bagFullBool = false;
 
     bool startingScreen = true;
-
+    public void AddToBag(dice x, dice[] targetBag)
+    {
+        if (numberOfDiceInBag == playerBagSize - 1)
+        {
+            for (int i=0; i<playerBagSize; i++)
+            {
+                if (targetBag[i] == null)
+                {
+                    targetBag[i] = x;
+                    break;
+                }
+            }
+            bagFullBool = true;
+        }
+        else
+        {
+            //add the dice to the bag array
+            for (int i=0; i<playerBagSize; i++)
+            {
+                if (targetBag[i] == null)
+                {
+                    targetBag[i] = x;
+                    break;
+                }
+            }
+            numberOfDiceInBag += 1;
+        }
+    }
     void Start()
     {
-        //CHANGES: spawning and controlling image sprites happens independently from creating dice objects now.
+                //CHANGES: spawning and controlling image sprites happens independently from creating dice objects now.
         startingPool = new dice[startPoolSize];
-        bag = new dice[playerBagSize];
+        playerBag = new dice[playerBagSize];
         
         //populating pool with generic dice
         for (int i=0; i<startPoolSize; i++)
         {
-            startingPool[i] = new dice(i - 5, 0);
+            int oddOrEvenPool = startPoolSize%2;
+            if(oddOrEvenPool == 1)
+            {
+                if (i < startPoolSize/2 + 0.5)
+                {
+                    startingPool[i] = new dice(-startPoolSize/2 - 1/2 + i * 2, 5);
+                }
+                else
+                {
+                    startingPool[i] = new dice(-startPoolSize/2 - 1/2 + (i - startPoolSize/2 - 1) * 2, 3);
+                }
+            }
+            else if(oddOrEvenPool == 0)
+                if(i < startPoolSize/2)
+                {
+                    startingPool[i] = new dice((i * 2 - startPoolSize/2), 5);
+                }
+                else
+                {
+                    startingPool[i] = new dice((i - startPoolSize/2)*2 - startPoolSize/2, 3);
+                }
         }
     }
+
 
     void Update()
     {
@@ -47,6 +97,14 @@ public class diceMaster : MonoBehaviour
                 renderDice(startingPool[i]);
             }   
         }
+
+        foreach (dice x in playerBag)
+        {
+            if (x != null)
+            {
+                x.debugDice();
+            }
+        }
           
     }
 
@@ -56,6 +114,8 @@ public class diceMaster : MonoBehaviour
         {
             x.rendered = true;
             x.me = GameObject.Instantiate(diePrefab, new Vector3(x.posx, x.posy, 0), Quaternion.identity);
+            dieBehaviour behaviour = x.me.GetComponent<dieBehaviour>();
+            behaviour.thisDie = x;
             
         }
     }

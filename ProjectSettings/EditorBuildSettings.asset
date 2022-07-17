@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dice Select.unity
     guid: 4f03e4f79e8182e46adc9d8569cc534a
+  - enabled: 1
+    path: Assets/Scenes/Battle Scene.unity
+    guid: 7b8cede05ab2d0544b905084896e2488
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 0ade906b9f2ff8c4da85c0a1d7e7e7f3
   m_configObjects: {}

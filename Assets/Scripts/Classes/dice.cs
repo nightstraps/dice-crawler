@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class dice
 {
-    public int test;
+    static int totalDice;
+    private int diceId;
 
     //0 represents x, 1 represents x and so on. This helps track what number is equal to what effect name
     enum effectAlias{EFFECT1, EFFECT2};
@@ -23,6 +24,8 @@ public class dice
     //generic dice constructor
     public dice()
     {
+        diceId = totalDice;
+        totalDice++;
         numSides = 6;
         maxEffects = 3;
         effects = new int[maxEffects];
@@ -35,6 +38,8 @@ public class dice
     //better dice constructor
     public dice(int numSides, int maxEffects, int x, int y)
     {
+        diceId = totalDice;
+        totalDice++;
         this.numSides = numSides;
         this.maxEffects = maxEffects;
         effects = new int[maxEffects];
@@ -46,6 +51,8 @@ public class dice
     //location specified
     public dice(int x, int y)
     {
+        diceId = totalDice;
+        totalDice++;
         numSides = 6;
         maxEffects = 3;
         effects = new int[maxEffects];
@@ -57,7 +64,8 @@ public class dice
     //prints all the values
     public void debugDice()
     {
-        Debug.Log("number of sides: " + numSides + "\n");
+        Debug.Log("dice number: " + diceId + " number of sides: " + numSides + "\n");
+        /**
         Debug.Log("max number of effects "+ maxEffects);
         Debug.Log("contains the following effects: ");
         for (int i=0; i<maxEffects; i++)
@@ -71,6 +79,7 @@ public class dice
                 Debug.Log("...");
             }
         }
+        **/
     }
 
     //roll dice, returns any number from 1 to numSides
