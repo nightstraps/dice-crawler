@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class diceMaster : MonoBehaviour
 {
@@ -97,18 +98,18 @@ public class diceMaster : MonoBehaviour
                 renderDice(startingPool[i]);
             } 
         }
-        else 
+        else
         {
             for (int i=0; i<startPoolSize; i++)
             {
                 Destroy(startingPool[i].me);
             }
-            Button backButton = GameObject.Find("Continue Button").GetComponent<Button>();
-            backButton.interactable = true;
+            if (SceneManager.GetActiveScene().buildIndex != 2)
             {
-                
+                Button backButton = GameObject.Find("Continue Button").GetComponent<Button>();
+                backButton.interactable = true;
             }
-            Debug.Log("finished picking dice!"); 
+            Debug.Log("finished picking dice!");
         } 
           
     }
